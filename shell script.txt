@@ -1,0 +1,66 @@
+UNIX
+
+cd C:/Jenkins_OneClickAT/workspace/NAS/RFACPP760_XDEV3
+ls -l
+unzip rfa7.6.0.L1.linux.xdev3.zip
+ls -l
+mv rfa7.6.0.L1.linux.xdev3 RFACPP760_XDEV3_UNIX
+ls -l
+chmod -R 777 RFACPP760_XDEV3_UNIX
+unzip rfa7.6.0.L1.solaris.xdev3.zip
+ls -l
+chmod -R 777 rfa7.6.0.L1.solaris.xdev3
+cp -rf rfa7.6.0.L1.solaris.xdev3/* RFACPP760_XDEV3_UNIX/.
+ls -l
+rm -rf rfa7.6.0.L1.solaris.xdev3
+ls -l
+zip -r RFACPP760_XDEV3_UNIX.zip RFACPP760_XDEV3_UNIX
+ls -l
+pwd
+----------------------------------
+WIN
+
+cd C:/Jenkins_OneClickAT/workspace/NAS/RFACPP760_XDEV3
+ls -l
+unzip rfa7.6.0.L1.win-shared.xdev3.zip
+ls -l
+unzip rfa7.6.0.L1.win-static.xdev3.zip
+ls -l
+mv rfa7.6.0.L1.win-shared.xdev3 RFACPP760_XDEV3_WIN_32
+ls -l
+chmod -R 777 RFACPP760_XDEV3_WIN_32
+chmod -R 777 rfa7.6.0.L1.win-static.xdev3
+ls -l
+cp -rf rfa7.6.0.L1.win-static.xdev3/* RFACPP760_XDEV3_WIN_32/.
+cp -rp RFACPP760_XDEV3_WIN_32 RFACPP760_XDEV3_WIN_64
+chmod -R 777 RFACPP760_XDEV3_WIN_64
+ls -l
+cd RFACPP760_XDEV3_WIN_64/Libs
+ls -l
+cd ..
+cd ..
+cd RFACPP760_XDEV3_WIN_32/Libs
+ls -l
+cd ..
+cd ..
+rm -rf RFACPP760_XDEV3_WIN_64/Libs/WIN_32* 
+rm -rf RFACPP760_XDEV3_WIN_32/Libs/WIN_64*
+ls -l
+cd RFACPP760_XDEV3_WIN_32/Libs
+ls -l
+cd ..
+cd ..
+pwd
+cd RFACPP760_XDEV3_WIN_64/Libs
+ls -l
+cd ..
+cd ..
+pwd
+zip -r RFACPP760_XDEV3_WIN_32.zip RFACPP760_XDEV3_WIN_32
+zip -r RFACPP760_XDEV3_WIN_64.zip RFACPP760_XDEV3_WIN_64
+ls -l
+rm -rf RFACPP760_XDEV3_WIN_32
+rm -rf RFACPP760_XDEV3_WIN_64
+rm -rf rfa7.6.0.L1.win-static.xdev3
+ls -l
+pwd

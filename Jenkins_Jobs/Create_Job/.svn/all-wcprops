@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bkkimstesttool_tools/!svn/ver/5965/trunk/CI/Tools/Jenkins_Code/Create_Job
+END
+createJenkinsJob.tcl
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/bkkimstesttool_tools/!svn/ver/5965/trunk/CI/Tools/Jenkins_Code/Create_Job/createJenkinsJob.tcl
+END
+jenkins-cli.jar
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/bkkimstesttool_tools/!svn/ver/5965/trunk/CI/Tools/Jenkins_Code/Create_Job/jenkins-cli.jar
+END
+input.txt
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bkkimstesttool_tools/!svn/ver/5965/trunk/CI/Tools/Jenkins_Code/Create_Job/input.txt
+END

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bkkimstesttool_tools/!svn/ver/5965/trunk/CI/Tools/Jenkins_Code/XML_Config_Jobs
+END
+05_Build_Slave_Config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/bkkimstesttool_tools/!svn/ver/5965/trunk/CI/Tools/Jenkins_Code/XML_Config_Jobs/05_Build_Slave_Config.xml
+END
+05_Build_Master_Config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/bkkimstesttool_tools/!svn/ver/5965/trunk/CI/Tools/Jenkins_Code/XML_Config_Jobs/05_Build_Master_Config.xml
+END
+06_Execute_Slave_Config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/bkkimstesttool_tools/!svn/ver/5965/trunk/CI/Tools/Jenkins_Code/XML_Config_Jobs/06_Execute_Slave_Config.xml
+END
+06_Execute_Master_Config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/bkkimstesttool_tools/!svn/ver/5965/trunk/CI/Tools/Jenkins_Code/XML_Config_Jobs/06_Execute_Master_Config.xml
+END
+06_Checkout_SAMI_Config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/bkkimstesttool_tools/!svn/ver/5965/trunk/CI/Tools/Jenkins_Code/XML_Config_Jobs/06_Checkout_SAMI_Config.xml
+END

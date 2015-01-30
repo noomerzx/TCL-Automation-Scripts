@@ -1,0 +1,978 @@
+#############################
+SERVICE
+#############################
+*S1*HSAutoFailback*decisionTime : 60
+*S1*HSAutoFailback*enable : True
+*S1*HSAutoFailback*network : mdhnet;238.3.3.3|9093|
+*S1*ageUnwatchedItemTime : 0
+*S1*blockedItemsFile : /var/reuters/rmds/blockeditems_file
+*S1*cacheLocation : srcApp
+*S1*cacheType : sinkDriven
+*S1*contribDataFileDirectory : .
+*S1*contribExchangeFieldList : 
+*S1*contribFieldList : 
+*S1*contribInsertRTL : False
+*S1*contribMaxUpdateRate : 5000
+*S1*contribMinUpdateRate : 500
+*S1*contribNegativeTemplateIdList : 80, 85
+*S1*contribPositiveTemplateIdList : 
+*S1*convertMfeedDataToRWF : True
+*S1*convertToIDNStyle : False
+*S1*dataType : 6
+*S1*discourageRequestsOnOutage : True
+*S1*dismountOnOutage : False
+*S1*expandedEnumFields : True
+*S1*forwardItemPriorityToSrcApp : False
+*S1*forwardServerMode : False
+*S1*headlinePermissioning : True
+*S1*hotStandby*heartbeat : 1
+*S1*hotStandby*learnTime : 10
+*S1*hotStandby*maxUpdateRate : 5000
+*S1*hotStandby*retryTime : 180
+*S1*hotStandby*standbyForwardInsertToSrcApp : True
+*S1*hotStandby*temporalDifference : 1
+*S1*hotStandby*timeout : 3
+*S1*includeUnwatchedItemsInLoad : False
+*S1*insertAction : lowest
+*S1*itemPriorityFile : /var/reuters/rmds/priority_file
+*S1*lockedItemThreshold : 5
+*S1*maxLoadLevel : 65535
+*S1*maxOperDuringFailover : 20
+*S1*newsNameList : N2_UBMS
+*S1*nonCachingItemFile : /var/reuters/rmds/nonCachingItem_file
+*S1*nonCachingItemList : 
+*S1*nonRecoverablePolling : False
+*S1*normalRetryTime : 120
+*S1*normalizedLoadLevelThresholdForConcurrentRequests : 95
+*S1*openWindowTimeWindow : 15
+*S1*pollCache : True
+*S1*preemption : ssl
+*S1*preemptionRecoveryThreshold : 0
+*S1*preemptionRetryTime : 180
+*S1*priorityAwareMarketfeed : False
+*S1*qosRate : TICK_BY_TICK
+*S1*qosRateInfo : 0
+*S1*qosTimeInfo : 0
+*S1*qosTimeliness : REALTIME
+*S1*recoverItemsOnClose : False
+*S1*removeUnwatchedItems : False
+*S1*retryLimit : 0
+*S1*retryTimer : 60
+*S1*rrmpFlushInterval : 20
+*S1*seqNumFollowsMarketfeedRules : True
+*S1*serviceCacheDumpFile : 
+*S1*serviceDumpFile : 
+*S1*serviceId : 1
+*S1*serviceQueueTimerMilliseconds : 10
+*S1*serviceRestartTime : 600
+*S1*staleRecoveryRetryTime : 600
+*S1*supportsOutofBandSnapshots : True
+*S1*supportsSnapshots : True
+*S1*useP2PForHotStandbyHeartbeat : False
+#############################
+*S2*HSAutoFailback*decisionTime : 60
+*S2*HSAutoFailback*enable : True
+*S2*HSAutoFailback*network : mdhnet;238.3.3.3|9093|
+*S2*ageUnwatchedItemTime : 0
+*S2*blockedItemsFile : /var/reuters/rmds/blockeditems_file
+*S2*cacheLocation : srcApp
+*S2*cacheType : sinkDriven
+*S2*contribDataFileDirectory : .
+*S2*contribExchangeFieldList : 
+*S2*contribFieldList : 
+*S2*contribInsertRTL : False
+*S2*contribMaxUpdateRate : 5000
+*S2*contribMinUpdateRate : 500
+*S2*contribNegativeTemplateIdList : 80, 85
+*S2*contribPositiveTemplateIdList : 
+*S2*convertMfeedDataToRWF : True
+*S2*convertToIDNStyle : False
+*S2*dataType : 6
+*S2*discourageRequestsOnOutage : True
+*S2*dismountOnOutage : False
+*S2*expandedEnumFields : True
+*S2*forwardItemPriorityToSrcApp : False
+*S2*forwardServerMode : False
+*S2*headlinePermissioning : True
+*S2*hotStandby*heartbeat : 1
+*S2*hotStandby*learnTime : 10
+*S2*hotStandby*maxUpdateRate : 5000
+*S2*hotStandby*retryTime : 180
+*S2*hotStandby*standbyForwardInsertToSrcApp : True
+*S2*hotStandby*temporalDifference : 1
+*S2*hotStandby*timeout : 3
+*S2*includeUnwatchedItemsInLoad : False
+*S2*insertAction : lowest
+*S2*itemPriorityFile : /var/reuters/rmds/priority_file
+*S2*lockedItemThreshold : 5
+*S2*maxLoadLevel : 65535
+*S2*maxOperDuringFailover : 20
+*S2*newsNameList : N2_UBMS
+*S2*nonCachingItemFile : /var/reuters/rmds/nonCachingItem_file
+*S2*nonCachingItemList : 
+*S2*nonRecoverablePolling : False
+*S2*normalRetryTime : 120
+*S2*normalizedLoadLevelThresholdForConcurrentRequests : 95
+*S2*openWindowTimeWindow : 15
+*S2*pollCache : True
+*S2*preemption : ssl
+*S2*preemptionRecoveryThreshold : 0
+*S2*preemptionRetryTime : 180
+*S2*priorityAwareMarketfeed : False
+*S2*qosRate : TICK_BY_TICK
+*S2*qosRateInfo : 0
+*S2*qosTimeInfo : 0
+*S2*qosTimeliness : REALTIME
+*S2*recoverItemsOnClose : False
+*S2*removeUnwatchedItems : False
+*S2*retryLimit : 0
+*S2*retryTimer : 60
+*S2*rrmpFlushInterval : 20
+*S2*seqNumFollowsMarketfeedRules : True
+*S2*serviceCacheDumpFile : 
+*S2*serviceDumpFile : 
+*S2*serviceId : 2
+*S2*serviceQueueTimerMilliseconds : 10
+*S2*serviceRestartTime : 600
+*S2*staleRecoveryRetryTime : 600
+*S2*supportsOutofBandSnapshots : True
+*S2*supportsSnapshots : True
+*S2*useP2PForHotStandbyHeartbeat : False
+#############################
+*S3*HSAutoFailback*decisionTime : 60
+*S3*HSAutoFailback*enable : True
+*S3*HSAutoFailback*network : mdhnet;238.3.3.3|9093|
+*S3*ageUnwatchedItemTime : 0
+*S3*blockedItemsFile : /var/reuters/rmds/blockeditems_file
+*S3*cacheLocation : srcApp
+*S3*cacheType : sinkDriven
+*S3*contribDataFileDirectory : .
+*S3*contribExchangeFieldList : 
+*S3*contribFieldList : 
+*S3*contribInsertRTL : False
+*S3*contribMaxUpdateRate : 5000
+*S3*contribMinUpdateRate : 500
+*S3*contribNegativeTemplateIdList : 80, 85
+*S3*contribPositiveTemplateIdList : 
+*S3*convertMfeedDataToRWF : True
+*S3*convertToIDNStyle : False
+*S3*dataType : 6
+*S3*discourageRequestsOnOutage : True
+*S3*dismountOnOutage : False
+*S3*expandedEnumFields : True
+*S3*forwardItemPriorityToSrcApp : False
+*S3*forwardServerMode : False
+*S3*headlinePermissioning : True
+*S3*hotStandby*heartbeat : 1
+*S3*hotStandby*learnTime : 10
+*S3*hotStandby*maxUpdateRate : 5000
+*S3*hotStandby*retryTime : 180
+*S3*hotStandby*standbyForwardInsertToSrcApp : True
+*S3*hotStandby*temporalDifference : 1
+*S3*hotStandby*timeout : 3
+*S3*includeUnwatchedItemsInLoad : False
+*S3*insertAction : lowest
+*S3*itemPriorityFile : /var/reuters/rmds/priority_file
+*S3*lockedItemThreshold : 5
+*S3*maxLoadLevel : 65535
+*S3*maxOperDuringFailover : 20
+*S3*newsNameList : N2_UBMS
+*S3*nonCachingItemFile : /var/reuters/rmds/nonCachingItem_file
+*S3*nonCachingItemList : 
+*S3*nonRecoverablePolling : False
+*S3*normalRetryTime : 120
+*S3*normalizedLoadLevelThresholdForConcurrentRequests : 95
+*S3*openWindowTimeWindow : 15
+*S3*pollCache : True
+*S3*preemption : ssl
+*S3*preemptionRecoveryThreshold : 0
+*S3*preemptionRetryTime : 180
+*S3*priorityAwareMarketfeed : False
+*S3*qosRate : TICK_BY_TICK
+*S3*qosRateInfo : 0
+*S3*qosTimeInfo : 0
+*S3*qosTimeliness : REALTIME
+*S3*recoverItemsOnClose : False
+*S3*removeUnwatchedItems : False
+*S3*retryLimit : 0
+*S3*retryTimer : 60
+*S3*rrmpFlushInterval : 20
+*S3*seqNumFollowsMarketfeedRules : True
+*S3*serviceCacheDumpFile : 
+*S3*serviceDumpFile : 
+*S3*serviceId : 3
+*S3*serviceQueueTimerMilliseconds : 10
+*S3*serviceRestartTime : 600
+*S3*staleRecoveryRetryTime : 600
+*S3*supportsOutofBandSnapshots : True
+*S3*supportsSnapshots : True
+*S3*useP2PForHotStandbyHeartbeat : False
+#############################
+*S4*HSAutoFailback*decisionTime : 60
+*S4*HSAutoFailback*enable : True
+*S4*HSAutoFailback*network : mdhnet;238.3.3.3|9093|
+*S4*ageUnwatchedItemTime : 0
+*S4*blockedItemsFile : /var/reuters/rmds/blockeditems_file
+*S4*cacheLocation : srcApp
+*S4*cacheType : sinkDriven
+*S4*contribDataFileDirectory : .
+*S4*contribExchangeFieldList : 
+*S4*contribFieldList : 
+*S4*contribInsertRTL : False
+*S4*contribMaxUpdateRate : 5000
+*S4*contribMinUpdateRate : 500
+*S4*contribNegativeTemplateIdList : 80, 85
+*S4*contribPositiveTemplateIdList : 
+*S4*convertMfeedDataToRWF : True
+*S4*convertToIDNStyle : False
+*S4*dataType : 6
+*S4*discourageRequestsOnOutage : True
+*S4*dismountOnOutage : False
+*S4*expandedEnumFields : True
+*S4*forwardItemPriorityToSrcApp : False
+*S4*forwardServerMode : False
+*S4*headlinePermissioning : True
+*S4*hotStandby*heartbeat : 1
+*S4*hotStandby*learnTime : 10
+*S4*hotStandby*maxUpdateRate : 5000
+*S4*hotStandby*retryTime : 180
+*S4*hotStandby*standbyForwardInsertToSrcApp : True
+*S4*hotStandby*temporalDifference : 1
+*S4*hotStandby*timeout : 3
+*S4*includeUnwatchedItemsInLoad : False
+*S4*insertAction : lowest
+*S4*itemPriorityFile : /var/reuters/rmds/priority_file
+*S4*lockedItemThreshold : 5
+*S4*maxLoadLevel : 65535
+*S4*maxOperDuringFailover : 20
+*S4*newsNameList : N2_UBMS
+*S4*nonCachingItemFile : /var/reuters/rmds/nonCachingItem_file
+*S4*nonCachingItemList : 
+*S4*nonRecoverablePolling : False
+*S4*normalRetryTime : 120
+*S4*normalizedLoadLevelThresholdForConcurrentRequests : 95
+*S4*openWindowTimeWindow : 15
+*S4*pollCache : True
+*S4*preemption : ssl
+*S4*preemptionRecoveryThreshold : 0
+*S4*preemptionRetryTime : 180
+*S4*priorityAwareMarketfeed : False
+*S4*qosRate : TICK_BY_TICK
+*S4*qosRateInfo : 0
+*S4*qosTimeInfo : 0
+*S4*qosTimeliness : REALTIME
+*S4*recoverItemsOnClose : False
+*S4*removeUnwatchedItems : False
+*S4*retryLimit : 0
+*S4*retryTimer : 60
+*S4*rrmpFlushInterval : 20
+*S4*seqNumFollowsMarketfeedRules : True
+*S4*serviceCacheDumpFile : 
+*S4*serviceDumpFile : 
+*S4*serviceId : 4
+*S4*serviceQueueTimerMilliseconds : 10
+*S4*serviceRestartTime : 600
+*S4*staleRecoveryRetryTime : 600
+*S4*supportsOutofBandSnapshots : True
+*S4*supportsSnapshots : True
+*S4*useP2PForHotStandbyHeartbeat : False
+#############################
+*S5*HSAutoFailback*decisionTime : 60
+*S5*HSAutoFailback*enable : True
+*S5*HSAutoFailback*network : mdhnet;238.3.3.3|9093|
+*S5*ageUnwatchedItemTime : 0
+*S5*blockedItemsFile : /var/reuters/rmds/blockeditems_file
+*S5*cacheLocation : srcApp
+*S5*cacheType : sinkDriven
+*S5*contribDataFileDirectory : .
+*S5*contribExchangeFieldList : 
+*S5*contribFieldList : 
+*S5*contribInsertRTL : False
+*S5*contribMaxUpdateRate : 5000
+*S5*contribMinUpdateRate : 500
+*S5*contribNegativeTemplateIdList : 80, 85
+*S5*contribPositiveTemplateIdList : 
+*S5*convertMfeedDataToRWF : True
+*S5*convertToIDNStyle : False
+*S5*dataType : 6
+*S5*discourageRequestsOnOutage : True
+*S5*dismountOnOutage : False
+*S5*expandedEnumFields : True
+*S5*forwardItemPriorityToSrcApp : False
+*S5*forwardServerMode : False
+*S5*headlinePermissioning : True
+*S5*hotStandby*heartbeat : 1
+*S5*hotStandby*learnTime : 10
+*S5*hotStandby*maxUpdateRate : 5000
+*S5*hotStandby*retryTime : 180
+*S5*hotStandby*standbyForwardInsertToSrcApp : True
+*S5*hotStandby*temporalDifference : 1
+*S5*hotStandby*timeout : 3
+*S5*includeUnwatchedItemsInLoad : False
+*S5*insertAction : lowest
+*S5*itemPriorityFile : /var/reuters/rmds/priority_file
+*S5*lockedItemThreshold : 5
+*S5*maxLoadLevel : 65535
+*S5*maxOperDuringFailover : 20
+*S5*newsNameList : N2_UBMS
+*S5*nonCachingItemFile : /var/reuters/rmds/nonCachingItem_file
+*S5*nonCachingItemList : 
+*S5*nonRecoverablePolling : False
+*S5*normalRetryTime : 120
+*S5*normalizedLoadLevelThresholdForConcurrentRequests : 95
+*S5*openWindowTimeWindow : 15
+*S5*pollCache : True
+*S5*preemption : ssl
+*S5*preemptionRecoveryThreshold : 0
+*S5*preemptionRetryTime : 180
+*S5*priorityAwareMarketfeed : False
+*S5*qosRate : TICK_BY_TICK
+*S5*qosRateInfo : 0
+*S5*qosTimeInfo : 0
+*S5*qosTimeliness : REALTIME
+*S5*recoverItemsOnClose : False
+*S5*removeUnwatchedItems : False
+*S5*retryLimit : 0
+*S5*retryTimer : 60
+*S5*rrmpFlushInterval : 20
+*S5*seqNumFollowsMarketfeedRules : True
+*S5*serviceCacheDumpFile : 
+*S5*serviceDumpFile : 
+*S5*serviceId : 5
+*S5*serviceQueueTimerMilliseconds : 10
+*S5*serviceRestartTime : 600
+*S5*staleRecoveryRetryTime : 600
+*S5*supportsOutofBandSnapshots : True
+*S5*supportsSnapshots : True
+*S5*useP2PForHotStandbyHeartbeat : False
+#############################
+*S6*HSAutoFailback*decisionTime : 60
+*S6*HSAutoFailback*enable : True
+*S6*HSAutoFailback*network : mdhnet;238.3.3.3|9093|
+*S6*ageUnwatchedItemTime : 0
+*S6*blockedItemsFile : /var/reuters/rmds/blockeditems_file
+*S6*cacheLocation : srcApp
+*S6*cacheType : sinkDriven
+*S6*contribDataFileDirectory : .
+*S6*contribExchangeFieldList : 
+*S6*contribFieldList : 
+*S6*contribInsertRTL : False
+*S6*contribMaxUpdateRate : 5000
+*S6*contribMinUpdateRate : 500
+*S6*contribNegativeTemplateIdList : 80, 85
+*S6*contribPositiveTemplateIdList : 
+*S6*convertMfeedDataToRWF : True
+*S6*convertToIDNStyle : False
+*S6*dataType : 6
+*S6*discourageRequestsOnOutage : True
+*S6*dismountOnOutage : False
+*S6*expandedEnumFields : True
+*S6*forwardItemPriorityToSrcApp : False
+*S6*forwardServerMode : False
+*S6*headlinePermissioning : True
+*S6*hotStandby*heartbeat : 1
+*S6*hotStandby*learnTime : 10
+*S6*hotStandby*maxUpdateRate : 5000
+*S6*hotStandby*retryTime : 180
+*S6*hotStandby*standbyForwardInsertToSrcApp : True
+*S6*hotStandby*temporalDifference : 1
+*S6*hotStandby*timeout : 3
+*S6*includeUnwatchedItemsInLoad : False
+*S6*insertAction : lowest
+*S6*itemPriorityFile : /var/reuters/rmds/priority_file
+*S6*lockedItemThreshold : 5
+*S6*maxLoadLevel : 65535
+*S6*maxOperDuringFailover : 20
+*S6*newsNameList : N2_UBMS
+*S6*nonCachingItemFile : /var/reuters/rmds/nonCachingItem_file
+*S6*nonCachingItemList : 
+*S6*nonRecoverablePolling : False
+*S6*normalRetryTime : 120
+*S6*normalizedLoadLevelThresholdForConcurrentRequests : 95
+*S6*openWindowTimeWindow : 15
+*S6*pollCache : True
+*S6*preemption : ssl
+*S6*preemptionRecoveryThreshold : 0
+*S6*preemptionRetryTime : 180
+*S6*priorityAwareMarketfeed : False
+*S6*qosRate : TICK_BY_TICK
+*S6*qosRateInfo : 0
+*S6*qosTimeInfo : 0
+*S6*qosTimeliness : REALTIME
+*S6*recoverItemsOnClose : False
+*S6*removeUnwatchedItems : False
+*S6*retryLimit : 0
+*S6*retryTimer : 60
+*S6*rrmpFlushInterval : 20
+*S6*seqNumFollowsMarketfeedRules : True
+*S6*serviceCacheDumpFile : 
+*S6*serviceDumpFile : 
+*S6*serviceId : 6
+*S6*serviceQueueTimerMilliseconds : 10
+*S6*serviceRestartTime : 600
+*S6*staleRecoveryRetryTime : 600
+*S6*supportsOutofBandSnapshots : True
+*S6*supportsSnapshots : True
+*S6*useP2PForHotStandbyHeartbeat : False
+#############################
+*S7*HSAutoFailback*decisionTime : 60
+*S7*HSAutoFailback*enable : True
+*S7*HSAutoFailback*network : mdhnet;238.3.3.3|9093|
+*S7*ageUnwatchedItemTime : 0
+*S7*blockedItemsFile : /var/reuters/rmds/blockeditems_file
+*S7*cacheLocation : srcApp
+*S7*cacheType : sinkDriven
+*S7*contribDataFileDirectory : .
+*S7*contribExchangeFieldList : 
+*S7*contribFieldList : 
+*S7*contribInsertRTL : False
+*S7*contribMaxUpdateRate : 5000
+*S7*contribMinUpdateRate : 500
+*S7*contribNegativeTemplateIdList : 80, 85
+*S7*contribPositiveTemplateIdList : 
+*S7*convertMfeedDataToRWF : True
+*S7*convertToIDNStyle : False
+*S7*dataType : 6
+*S7*discourageRequestsOnOutage : True
+*S7*dismountOnOutage : False
+*S7*expandedEnumFields : True
+*S7*forwardItemPriorityToSrcApp : False
+*S7*forwardServerMode : False
+*S7*headlinePermissioning : True
+*S7*hotStandby*heartbeat : 1
+*S7*hotStandby*learnTime : 10
+*S7*hotStandby*maxUpdateRate : 5000
+*S7*hotStandby*retryTime : 180
+*S7*hotStandby*standbyForwardInsertToSrcApp : True
+*S7*hotStandby*temporalDifference : 1
+*S7*hotStandby*timeout : 3
+*S7*includeUnwatchedItemsInLoad : False
+*S7*insertAction : lowest
+*S7*itemPriorityFile : /var/reuters/rmds/priority_file
+*S7*lockedItemThreshold : 5
+*S7*maxLoadLevel : 65535
+*S7*maxOperDuringFailover : 20
+*S7*newsNameList : N2_UBMS
+*S7*nonCachingItemFile : /var/reuters/rmds/nonCachingItem_file
+*S7*nonCachingItemList : 
+*S7*nonRecoverablePolling : False
+*S7*normalRetryTime : 120
+*S7*normalizedLoadLevelThresholdForConcurrentRequests : 95
+*S7*openWindowTimeWindow : 15
+*S7*pollCache : True
+*S7*preemption : ssl
+*S7*preemptionRecoveryThreshold : 0
+*S7*preemptionRetryTime : 180
+*S7*priorityAwareMarketfeed : False
+*S7*qosRate : TICK_BY_TICK
+*S7*qosRateInfo : 0
+*S7*qosTimeInfo : 0
+*S7*qosTimeliness : REALTIME
+*S7*recoverItemsOnClose : False
+*S7*removeUnwatchedItems : False
+*S7*retryLimit : 0
+*S7*retryTimer : 60
+*S7*rrmpFlushInterval : 20
+*S7*seqNumFollowsMarketfeedRules : True
+*S7*serviceCacheDumpFile : 
+*S7*serviceDumpFile : 
+*S7*serviceId : 7
+*S7*serviceQueueTimerMilliseconds : 10
+*S7*serviceRestartTime : 600
+*S7*staleRecoveryRetryTime : 600
+*S7*supportsOutofBandSnapshots : True
+*S7*supportsSnapshots : True
+*S7*useP2PForHotStandbyHeartbeat : False
+#############################
+*S8*HSAutoFailback*decisionTime : 60
+*S8*HSAutoFailback*enable : True
+*S8*HSAutoFailback*network : mdhnet;238.3.3.3|9093|
+*S8*ageUnwatchedItemTime : 0
+*S8*blockedItemsFile : /var/reuters/rmds/blockeditems_file
+*S8*cacheLocation : srcApp
+*S8*cacheType : sinkDriven
+*S8*contribDataFileDirectory : .
+*S8*contribExchangeFieldList : 
+*S8*contribFieldList : 
+*S8*contribInsertRTL : False
+*S8*contribMaxUpdateRate : 5000
+*S8*contribMinUpdateRate : 500
+*S8*contribNegativeTemplateIdList : 80, 85
+*S8*contribPositiveTemplateIdList : 
+*S8*convertMfeedDataToRWF : True
+*S8*convertToIDNStyle : False
+*S8*dataType : 6
+*S8*discourageRequestsOnOutage : True
+*S8*dismountOnOutage : False
+*S8*expandedEnumFields : True
+*S8*forwardItemPriorityToSrcApp : False
+*S8*forwardServerMode : False
+*S8*headlinePermissioning : True
+*S8*hotStandby*heartbeat : 1
+*S8*hotStandby*learnTime : 10
+*S8*hotStandby*maxUpdateRate : 5000
+*S8*hotStandby*retryTime : 180
+*S8*hotStandby*standbyForwardInsertToSrcApp : True
+*S8*hotStandby*temporalDifference : 1
+*S8*hotStandby*timeout : 3
+*S8*includeUnwatchedItemsInLoad : False
+*S8*insertAction : lowest
+*S8*itemPriorityFile : /var/reuters/rmds/priority_file
+*S8*lockedItemThreshold : 5
+*S8*maxLoadLevel : 65535
+*S8*maxOperDuringFailover : 20
+*S8*newsNameList : N2_UBMS
+*S8*nonCachingItemFile : /var/reuters/rmds/nonCachingItem_file
+*S8*nonCachingItemList : 
+*S8*nonRecoverablePolling : False
+*S8*normalRetryTime : 120
+*S8*normalizedLoadLevelThresholdForConcurrentRequests : 95
+*S8*openWindowTimeWindow : 15
+*S8*pollCache : True
+*S8*preemption : ssl
+*S8*preemptionRecoveryThreshold : 0
+*S8*preemptionRetryTime : 180
+*S8*priorityAwareMarketfeed : False
+*S8*qosRate : TICK_BY_TICK
+*S8*qosRateInfo : 0
+*S8*qosTimeInfo : 0
+*S8*qosTimeliness : REALTIME
+*S8*recoverItemsOnClose : False
+*S8*removeUnwatchedItems : False
+*S8*retryLimit : 0
+*S8*retryTimer : 60
+*S8*rrmpFlushInterval : 20
+*S8*seqNumFollowsMarketfeedRules : True
+*S8*serviceCacheDumpFile : 
+*S8*serviceDumpFile : 
+*S8*serviceId : 8
+*S8*serviceQueueTimerMilliseconds : 10
+*S8*serviceRestartTime : 600
+*S8*staleRecoveryRetryTime : 600
+*S8*supportsOutofBandSnapshots : True
+*S8*supportsSnapshots : True
+*S8*useP2PForHotStandbyHeartbeat : False
+#############################
+*S9*HSAutoFailback*decisionTime : 60
+*S9*HSAutoFailback*enable : True
+*S9*HSAutoFailback*network : mdhnet;238.3.3.3|9093|
+*S9*ageUnwatchedItemTime : 0
+*S9*blockedItemsFile : /var/reuters/rmds/blockeditems_file
+*S9*cacheLocation : srcApp
+*S9*cacheType : sinkDriven
+*S9*contribDataFileDirectory : .
+*S9*contribExchangeFieldList : 
+*S9*contribFieldList : 
+*S9*contribInsertRTL : False
+*S9*contribMaxUpdateRate : 5000
+*S9*contribMinUpdateRate : 500
+*S9*contribNegativeTemplateIdList : 80, 85
+*S9*contribPositiveTemplateIdList : 
+*S9*convertMfeedDataToRWF : True
+*S9*convertToIDNStyle : False
+*S9*dataType : 6
+*S9*discourageRequestsOnOutage : True
+*S9*dismountOnOutage : False
+*S9*expandedEnumFields : True
+*S9*forwardItemPriorityToSrcApp : False
+*S9*forwardServerMode : False
+*S9*headlinePermissioning : True
+*S9*hotStandby*heartbeat : 1
+*S9*hotStandby*learnTime : 10
+*S9*hotStandby*maxUpdateRate : 5000
+*S9*hotStandby*retryTime : 180
+*S9*hotStandby*standbyForwardInsertToSrcApp : True
+*S9*hotStandby*temporalDifference : 1
+*S9*hotStandby*timeout : 3
+*S9*includeUnwatchedItemsInLoad : False
+*S9*insertAction : lowest
+*S9*itemPriorityFile : /var/reuters/rmds/priority_file
+*S9*lockedItemThreshold : 5
+*S9*maxLoadLevel : 65535
+*S9*maxOperDuringFailover : 20
+*S9*newsNameList : N2_UBMS
+*S9*nonCachingItemFile : /var/reuters/rmds/nonCachingItem_file
+*S9*nonCachingItemList : 
+*S9*nonRecoverablePolling : False
+*S9*normalRetryTime : 120
+*S9*normalizedLoadLevelThresholdForConcurrentRequests : 95
+*S9*openWindowTimeWindow : 15
+*S9*pollCache : True
+*S9*preemption : ssl
+*S9*preemptionRecoveryThreshold : 0
+*S9*preemptionRetryTime : 180
+*S9*priorityAwareMarketfeed : False
+*S9*qosRate : TICK_BY_TICK
+*S9*qosRateInfo : 0
+*S9*qosTimeInfo : 0
+*S9*qosTimeliness : REALTIME
+*S9*recoverItemsOnClose : False
+*S9*removeUnwatchedItems : False
+*S9*retryLimit : 0
+*S9*retryTimer : 60
+*S9*rrmpFlushInterval : 20
+*S9*seqNumFollowsMarketfeedRules : True
+*S9*serviceCacheDumpFile : 
+*S9*serviceDumpFile : 
+*S9*serviceId : 9
+*S9*serviceQueueTimerMilliseconds : 10
+*S9*serviceRestartTime : 600
+*S9*staleRecoveryRetryTime : 600
+*S9*supportsOutofBandSnapshots : True
+*S9*supportsSnapshots : True
+*S9*useP2PForHotStandbyHeartbeat : False
+#############################
+*S10*HSAutoFailback*decisionTime : 60
+*S10*HSAutoFailback*enable : True
+*S10*HSAutoFailback*network : mdhnet;238.3.3.3|9093|
+*S10*ageUnwatchedItemTime : 0
+*S10*blockedItemsFile : /var/reuters/rmds/blockeditems_file
+*S10*cacheLocation : srcApp
+*S10*cacheType : sinkDriven
+*S10*contribDataFileDirectory : .
+*S10*contribExchangeFieldList : 
+*S10*contribFieldList : 
+*S10*contribInsertRTL : False
+*S10*contribMaxUpdateRate : 5000
+*S10*contribMinUpdateRate : 500
+*S10*contribNegativeTemplateIdList : 80, 85
+*S10*contribPositiveTemplateIdList : 
+*S10*convertMfeedDataToRWF : True
+*S10*convertToIDNStyle : False
+*S10*dataType : 6
+*S10*discourageRequestsOnOutage : True
+*S10*dismountOnOutage : False
+*S10*expandedEnumFields : True
+*S10*forwardItemPriorityToSrcApp : False
+*S10*forwardServerMode : False
+*S10*headlinePermissioning : True
+*S10*hotStandby*heartbeat : 1
+*S10*hotStandby*learnTime : 10
+*S10*hotStandby*maxUpdateRate : 5000
+*S10*hotStandby*retryTime : 180
+*S10*hotStandby*standbyForwardInsertToSrcApp : True
+*S10*hotStandby*temporalDifference : 1
+*S10*hotStandby*timeout : 3
+*S10*includeUnwatchedItemsInLoad : False
+*S10*insertAction : lowest
+*S10*itemPriorityFile : /var/reuters/rmds/priority_file
+*S10*lockedItemThreshold : 5
+*S10*maxLoadLevel : 65535
+*S10*maxOperDuringFailover : 20
+*S10*newsNameList : N2_UBMS
+*S10*nonCachingItemFile : /var/reuters/rmds/nonCachingItem_file
+*S10*nonCachingItemList : 
+*S10*nonRecoverablePolling : False
+*S10*normalRetryTime : 120
+*S10*normalizedLoadLevelThresholdForConcurrentRequests : 95
+*S10*openWindowTimeWindow : 15
+*S10*pollCache : True
+*S10*preemption : ssl
+*S10*preemptionRecoveryThreshold : 0
+*S10*preemptionRetryTime : 180
+*S10*priorityAwareMarketfeed : False
+*S10*qosRate : TICK_BY_TICK
+*S10*qosRateInfo : 0
+*S10*qosTimeInfo : 0
+*S10*qosTimeliness : REALTIME
+*S10*recoverItemsOnClose : False
+*S10*removeUnwatchedItems : False
+*S10*retryLimit : 0
+*S10*retryTimer : 60
+*S10*rrmpFlushInterval : 20
+*S10*seqNumFollowsMarketfeedRules : True
+*S10*serviceCacheDumpFile : 
+*S10*serviceDumpFile : 
+*S10*serviceId : 10
+*S10*serviceQueueTimerMilliseconds : 10
+*S10*serviceRestartTime : 600
+*S10*staleRecoveryRetryTime : 600
+*S10*supportsOutofBandSnapshots : True
+*S10*supportsSnapshots : True
+*S10*useP2PForHotStandbyHeartbeat : False
+#############################
+#############################
+ROUTE
+#############################
+*adh*routeS1.route*S1*Broadcast*groupList : 2
+*adh*routeS1.route*S1*Interactive*groupList : 1, 3, 4
+*adh*routeS1.route*S1*appServiceName : RED3_ELEKTRON_EPD_RSSL 
+*adh*routeS1.route*S1*commLinks : Interactive, Broadcast
+*adh*routeS1.route*S1*dacsAttributes : 
+*adh*routeS1.route*S1*datastreamMonitor*interruptionDetection : False
+*adh*routeS1.route*S1*datastreamMonitor*interruptionDuration : 4
+*adh*routeS1.route*S1*datastreamMonitor*trafficWindow : 10
+*adh*routeS1.route*S1*lockedDumpFile : 
+*adh*routeS1.route*S1*maxCache : 60000
+*adh*routeS1.route*S1*serverCost : 0
+*adh*routeS1.route*S1*serviceId : 1
+*adh*routeS1.route*S1*updateRateThreshold : 200
+*adh*routeS1.route*applicationId : 256
+*adh*routeS1.route*hostList : 192.168.8.122
+*adh*routeS1.route*numIpcInputBuffers : 10
+*adh*routeS1.route*numIpcOutputBuffers : 100
+*adh*routeS1.route*pingInterval : 2
+*adh*routeS1.route*port : 19002 
+*adh*routeS1.route*protocol : rssl 
+*adh*routeS1.route*recoveryBySSLLib : True
+*adh*routeS1.route*recoveryInterval : 10
+*adh*routeS1.route*serviceList : S1
+*adh*routeS1.route*singleOpen : False
+*adh*routeS1.route*tcpNoDelay : False
+*adh*routeS1.route*tcpRecvBufSize : 2097152
+*adh*routeS1.route*userName : rmds
+#############################
+*adh*routeS2.route*S2*Broadcast*groupList : 2
+*adh*routeS2.route*S2*Interactive*groupList : 1, 3, 4
+*adh*routeS2.route*S2*appServiceName : RED3_ELEKTRON_EPD_RSSL 
+*adh*routeS2.route*S2*commLinks : Interactive, Broadcast
+*adh*routeS2.route*S2*dacsAttributes : 
+*adh*routeS2.route*S2*datastreamMonitor*interruptionDetection : False
+*adh*routeS2.route*S2*datastreamMonitor*interruptionDuration : 4
+*adh*routeS2.route*S2*datastreamMonitor*trafficWindow : 10
+*adh*routeS2.route*S2*lockedDumpFile : 
+*adh*routeS2.route*S2*maxCache : 60000
+*adh*routeS2.route*S2*serverCost : 0
+*adh*routeS2.route*S2*serviceId : 2
+*adh*routeS2.route*S2*updateRateThreshold : 200
+*adh*routeS2.route*applicationId : 256
+*adh*routeS2.route*hostList : 192.168.8.122
+*adh*routeS2.route*numIpcInputBuffers : 10
+*adh*routeS2.route*numIpcOutputBuffers : 100
+*adh*routeS2.route*pingInterval : 2
+*adh*routeS2.route*port : 19002 
+*adh*routeS2.route*protocol : rssl 
+*adh*routeS2.route*recoveryBySSLLib : True
+*adh*routeS2.route*recoveryInterval : 10
+*adh*routeS2.route*serviceList : S2
+*adh*routeS2.route*singleOpen : False
+*adh*routeS2.route*tcpNoDelay : False
+*adh*routeS2.route*tcpRecvBufSize : 2097152
+*adh*routeS2.route*userName : rmds
+#############################
+*adh*routeS3.route*S3*Broadcast*groupList : 2
+*adh*routeS3.route*S3*Interactive*groupList : 1, 3, 4
+*adh*routeS3.route*S3*appServiceName : RED3_ELEKTRON_EPD_RSSL 
+*adh*routeS3.route*S3*commLinks : Interactive, Broadcast
+*adh*routeS3.route*S3*dacsAttributes : 
+*adh*routeS3.route*S3*datastreamMonitor*interruptionDetection : False
+*adh*routeS3.route*S3*datastreamMonitor*interruptionDuration : 4
+*adh*routeS3.route*S3*datastreamMonitor*trafficWindow : 10
+*adh*routeS3.route*S3*lockedDumpFile : 
+*adh*routeS3.route*S3*maxCache : 60000
+*adh*routeS3.route*S3*serverCost : 0
+*adh*routeS3.route*S3*serviceId : 3
+*adh*routeS3.route*S3*updateRateThreshold : 200
+*adh*routeS3.route*applicationId : 256
+*adh*routeS3.route*hostList : 192.168.8.122
+*adh*routeS3.route*numIpcInputBuffers : 10
+*adh*routeS3.route*numIpcOutputBuffers : 100
+*adh*routeS3.route*pingInterval : 2
+*adh*routeS3.route*port : 19002 
+*adh*routeS3.route*protocol : rssl 
+*adh*routeS3.route*recoveryBySSLLib : True
+*adh*routeS3.route*recoveryInterval : 10
+*adh*routeS3.route*serviceList : S3
+*adh*routeS3.route*singleOpen : False
+*adh*routeS3.route*tcpNoDelay : False
+*adh*routeS3.route*tcpRecvBufSize : 2097152
+*adh*routeS3.route*userName : rmds
+#############################
+*adh*routeS4.route*S4*Broadcast*groupList : 2
+*adh*routeS4.route*S4*Interactive*groupList : 1, 3, 4
+*adh*routeS4.route*S4*appServiceName : RED3_ELEKTRON_EPD_RSSL 
+*adh*routeS4.route*S4*commLinks : Interactive, Broadcast
+*adh*routeS4.route*S4*dacsAttributes : 
+*adh*routeS4.route*S4*datastreamMonitor*interruptionDetection : False
+*adh*routeS4.route*S4*datastreamMonitor*interruptionDuration : 4
+*adh*routeS4.route*S4*datastreamMonitor*trafficWindow : 10
+*adh*routeS4.route*S4*lockedDumpFile : 
+*adh*routeS4.route*S4*maxCache : 60000
+*adh*routeS4.route*S4*serverCost : 0
+*adh*routeS4.route*S4*serviceId : 4
+*adh*routeS4.route*S4*updateRateThreshold : 200
+*adh*routeS4.route*applicationId : 256
+*adh*routeS4.route*hostList : 192.168.8.122
+*adh*routeS4.route*numIpcInputBuffers : 10
+*adh*routeS4.route*numIpcOutputBuffers : 100
+*adh*routeS4.route*pingInterval : 2
+*adh*routeS4.route*port : 19002 
+*adh*routeS4.route*protocol : rssl 
+*adh*routeS4.route*recoveryBySSLLib : True
+*adh*routeS4.route*recoveryInterval : 10
+*adh*routeS4.route*serviceList : S4
+*adh*routeS4.route*singleOpen : False
+*adh*routeS4.route*tcpNoDelay : False
+*adh*routeS4.route*tcpRecvBufSize : 2097152
+*adh*routeS4.route*userName : rmds
+#############################
+*adh*routeS5.route*S5*Broadcast*groupList : 2
+*adh*routeS5.route*S5*Interactive*groupList : 1, 3, 4
+*adh*routeS5.route*S5*appServiceName : RED3_ELEKTRON_EPD_RSSL 
+*adh*routeS5.route*S5*commLinks : Interactive, Broadcast
+*adh*routeS5.route*S5*dacsAttributes : 
+*adh*routeS5.route*S5*datastreamMonitor*interruptionDetection : False
+*adh*routeS5.route*S5*datastreamMonitor*interruptionDuration : 4
+*adh*routeS5.route*S5*datastreamMonitor*trafficWindow : 10
+*adh*routeS5.route*S5*lockedDumpFile : 
+*adh*routeS5.route*S5*maxCache : 60000
+*adh*routeS5.route*S5*serverCost : 0
+*adh*routeS5.route*S5*serviceId : 5
+*adh*routeS5.route*S5*updateRateThreshold : 200
+*adh*routeS5.route*applicationId : 256
+*adh*routeS5.route*hostList : 192.168.8.122
+*adh*routeS5.route*numIpcInputBuffers : 10
+*adh*routeS5.route*numIpcOutputBuffers : 100
+*adh*routeS5.route*pingInterval : 2
+*adh*routeS5.route*port : 19002 
+*adh*routeS5.route*protocol : rssl 
+*adh*routeS5.route*recoveryBySSLLib : True
+*adh*routeS5.route*recoveryInterval : 10
+*adh*routeS5.route*serviceList : S5
+*adh*routeS5.route*singleOpen : False
+*adh*routeS5.route*tcpNoDelay : False
+*adh*routeS5.route*tcpRecvBufSize : 2097152
+*adh*routeS5.route*userName : rmds
+#############################
+*adh*routeS6.route*S6*Broadcast*groupList : 2
+*adh*routeS6.route*S6*Interactive*groupList : 1, 3, 4
+*adh*routeS6.route*S6*appServiceName : RED3_ELEKTRON_EPD_RSSL 
+*adh*routeS6.route*S6*commLinks : Interactive, Broadcast
+*adh*routeS6.route*S6*dacsAttributes : 
+*adh*routeS6.route*S6*datastreamMonitor*interruptionDetection : False
+*adh*routeS6.route*S6*datastreamMonitor*interruptionDuration : 4
+*adh*routeS6.route*S6*datastreamMonitor*trafficWindow : 10
+*adh*routeS6.route*S6*lockedDumpFile : 
+*adh*routeS6.route*S6*maxCache : 60000
+*adh*routeS6.route*S6*serverCost : 0
+*adh*routeS6.route*S6*serviceId : 6
+*adh*routeS6.route*S6*updateRateThreshold : 200
+*adh*routeS6.route*applicationId : 256
+*adh*routeS6.route*hostList : 192.168.8.122
+*adh*routeS6.route*numIpcInputBuffers : 10
+*adh*routeS6.route*numIpcOutputBuffers : 100
+*adh*routeS6.route*pingInterval : 2
+*adh*routeS6.route*port : 19002 
+*adh*routeS6.route*protocol : rssl 
+*adh*routeS6.route*recoveryBySSLLib : True
+*adh*routeS6.route*recoveryInterval : 10
+*adh*routeS6.route*serviceList : S6
+*adh*routeS6.route*singleOpen : False
+*adh*routeS6.route*tcpNoDelay : False
+*adh*routeS6.route*tcpRecvBufSize : 2097152
+*adh*routeS6.route*userName : rmds
+#############################
+*adh*routeS7.route*S7*Broadcast*groupList : 2
+*adh*routeS7.route*S7*Interactive*groupList : 1, 3, 4
+*adh*routeS7.route*S7*appServiceName : RED3_ELEKTRON_EPD_RSSL 
+*adh*routeS7.route*S7*commLinks : Interactive, Broadcast
+*adh*routeS7.route*S7*dacsAttributes : 
+*adh*routeS7.route*S7*datastreamMonitor*interruptionDetection : False
+*adh*routeS7.route*S7*datastreamMonitor*interruptionDuration : 4
+*adh*routeS7.route*S7*datastreamMonitor*trafficWindow : 10
+*adh*routeS7.route*S7*lockedDumpFile : 
+*adh*routeS7.route*S7*maxCache : 60000
+*adh*routeS7.route*S7*serverCost : 0
+*adh*routeS7.route*S7*serviceId : 7
+*adh*routeS7.route*S7*updateRateThreshold : 200
+*adh*routeS7.route*applicationId : 256
+*adh*routeS7.route*hostList : 192.168.8.122
+*adh*routeS7.route*numIpcInputBuffers : 10
+*adh*routeS7.route*numIpcOutputBuffers : 100
+*adh*routeS7.route*pingInterval : 2
+*adh*routeS7.route*port : 19002 
+*adh*routeS7.route*protocol : rssl 
+*adh*routeS7.route*recoveryBySSLLib : True
+*adh*routeS7.route*recoveryInterval : 10
+*adh*routeS7.route*serviceList : S7
+*adh*routeS7.route*singleOpen : False
+*adh*routeS7.route*tcpNoDelay : False
+*adh*routeS7.route*tcpRecvBufSize : 2097152
+*adh*routeS7.route*userName : rmds
+#############################
+*adh*routeS8.route*S8*Broadcast*groupList : 2
+*adh*routeS8.route*S8*Interactive*groupList : 1, 3, 4
+*adh*routeS8.route*S8*appServiceName : RED3_ELEKTRON_EPD_RSSL 
+*adh*routeS8.route*S8*commLinks : Interactive, Broadcast
+*adh*routeS8.route*S8*dacsAttributes : 
+*adh*routeS8.route*S8*datastreamMonitor*interruptionDetection : False
+*adh*routeS8.route*S8*datastreamMonitor*interruptionDuration : 4
+*adh*routeS8.route*S8*datastreamMonitor*trafficWindow : 10
+*adh*routeS8.route*S8*lockedDumpFile : 
+*adh*routeS8.route*S8*maxCache : 60000
+*adh*routeS8.route*S8*serverCost : 0
+*adh*routeS8.route*S8*serviceId : 8
+*adh*routeS8.route*S8*updateRateThreshold : 200
+*adh*routeS8.route*applicationId : 256
+*adh*routeS8.route*hostList : 192.168.8.122
+*adh*routeS8.route*numIpcInputBuffers : 10
+*adh*routeS8.route*numIpcOutputBuffers : 100
+*adh*routeS8.route*pingInterval : 2
+*adh*routeS8.route*port : 19002 
+*adh*routeS8.route*protocol : rssl 
+*adh*routeS8.route*recoveryBySSLLib : True
+*adh*routeS8.route*recoveryInterval : 10
+*adh*routeS8.route*serviceList : S8
+*adh*routeS8.route*singleOpen : False
+*adh*routeS8.route*tcpNoDelay : False
+*adh*routeS8.route*tcpRecvBufSize : 2097152
+*adh*routeS8.route*userName : rmds
+#############################
+*adh*routeS9.route*S9*Broadcast*groupList : 2
+*adh*routeS9.route*S9*Interactive*groupList : 1, 3, 4
+*adh*routeS9.route*S9*appServiceName : RED3_ELEKTRON_EPD_RSSL 
+*adh*routeS9.route*S9*commLinks : Interactive, Broadcast
+*adh*routeS9.route*S9*dacsAttributes : 
+*adh*routeS9.route*S9*datastreamMonitor*interruptionDetection : False
+*adh*routeS9.route*S9*datastreamMonitor*interruptionDuration : 4
+*adh*routeS9.route*S9*datastreamMonitor*trafficWindow : 10
+*adh*routeS9.route*S9*lockedDumpFile : 
+*adh*routeS9.route*S9*maxCache : 60000
+*adh*routeS9.route*S9*serverCost : 0
+*adh*routeS9.route*S9*serviceId : 9
+*adh*routeS9.route*S9*updateRateThreshold : 200
+*adh*routeS9.route*applicationId : 256
+*adh*routeS9.route*hostList : 192.168.8.122
+*adh*routeS9.route*numIpcInputBuffers : 10
+*adh*routeS9.route*numIpcOutputBuffers : 100
+*adh*routeS9.route*pingInterval : 2
+*adh*routeS9.route*port : 19002 
+*adh*routeS9.route*protocol : rssl 
+*adh*routeS9.route*recoveryBySSLLib : True
+*adh*routeS9.route*recoveryInterval : 10
+*adh*routeS9.route*serviceList : S9
+*adh*routeS9.route*singleOpen : False
+*adh*routeS9.route*tcpNoDelay : False
+*adh*routeS9.route*tcpRecvBufSize : 2097152
+*adh*routeS9.route*userName : rmds
+#############################
+*adh*routeS10.route*S10*Broadcast*groupList : 2
+*adh*routeS10.route*S10*Interactive*groupList : 1, 3, 4
+*adh*routeS10.route*S10*appServiceName : RED3_ELEKTRON_EPD_RSSL 
+*adh*routeS10.route*S10*commLinks : Interactive, Broadcast
+*adh*routeS10.route*S10*dacsAttributes : 
+*adh*routeS10.route*S10*datastreamMonitor*interruptionDetection : False
+*adh*routeS10.route*S10*datastreamMonitor*interruptionDuration : 4
+*adh*routeS10.route*S10*datastreamMonitor*trafficWindow : 10
+*adh*routeS10.route*S10*lockedDumpFile : 
+*adh*routeS10.route*S10*maxCache : 60000
+*adh*routeS10.route*S10*serverCost : 0
+*adh*routeS10.route*S10*serviceId : 10
+*adh*routeS10.route*S10*updateRateThreshold : 200
+*adh*routeS10.route*applicationId : 256
+*adh*routeS10.route*hostList : 192.168.8.122
+*adh*routeS10.route*numIpcInputBuffers : 10
+*adh*routeS10.route*numIpcOutputBuffers : 100
+*adh*routeS10.route*pingInterval : 2
+*adh*routeS10.route*port : 19002 
+*adh*routeS10.route*protocol : rssl 
+*adh*routeS10.route*recoveryBySSLLib : True
+*adh*routeS10.route*recoveryInterval : 10
+*adh*routeS10.route*serviceList : S10
+*adh*routeS10.route*singleOpen : False
+*adh*routeS10.route*tcpNoDelay : False
+*adh*routeS10.route*tcpRecvBufSize : 2097152
+*adh*routeS10.route*userName : rmds
+#############################
+*adh*routeList : S1 ,S2 ,S3 ,S4 ,S5 ,S6 ,S7 ,S8 ,S9 ,S10
+#############################

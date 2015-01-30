@@ -1,0 +1,13 @@
+K 10
+svn:ignore
+V 101
+lib
+logApp
+build.bat
+config-zion.txt
+builtScript1.4.tcl
+lib.zip
+buildScriptT.tcl
+buildScriptUnix.tcl
+
+END

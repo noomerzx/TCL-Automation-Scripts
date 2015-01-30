@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <jenkins.advancedqueue.AdvancedQueueSorterJobProperty plugin="PrioritySorter@2.6">
+      <useJobPriority>false</useJobPriority>
+      <priority>-1</priority>
+    </jenkins.advancedqueue.AdvancedQueueSorterJobProperty>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <org.jvnet.jenkins.plugins.nodelabelparameter.NodeParameterDefinition plugin="nodelabelparameter@1.4">
+          <name>_MACHINES</name>
+          <description></description>
+          <allowedSlaves/>
+          <defaultSlaves>
+            <string>W08E_32-45V</string>
+          </defaultSlaves>
+          <triggerIfResult>allowMultiSelectionForConcurrentBuilds</triggerIfResult>
+          <allowMultiNodeSelection>true</allowMultiNodeSelection>
+          <triggerConcurrentBuilds>true</triggerConcurrentBuilds>
+          <ignoreOfflineNodes>false</ignoreOfflineNodes>
+        </org.jvnet.jenkins.plugins.nodelabelparameter.NodeParameterDefinition>
+        <com.cwctravel.hudson.plugins.extended__choice__parameter.ExtendedChoiceParameterDefinition plugin="extended-choice-parameter@0.30">
+          <name>_SECTIONS</name>
+          <description></description>
+          <quoteValue>false</quoteValue>
+          <visibleItemCount>5</visibleItemCount>
+          <type>PT_SINGLE_SELECT</type>
+          <value>word</value>
+          <propertyFile></propertyFile>
+          <propertyKey></propertyKey>
+          <defaultValue>01_PackageVerification</defaultValue>
+          <defaultPropertyFile></defaultPropertyFile>
+          <defaultPropertyKey></defaultPropertyKey>
+          <multiSelectDelimiter>,</multiSelectDelimiter>
+        </com.cwctravel.hudson.plugins.extended__choice__parameter.ExtendedChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+    <hudson.plugins.throttleconcurrents.ThrottleJobProperty plugin="throttle-concurrents@1.8.1">
+      <maxConcurrentPerNode>0</maxConcurrentPerNode>
+      <maxConcurrentTotal>0</maxConcurrentTotal>
+      <throttleEnabled>false</throttleEnabled>
+      <throttleOption>project</throttleOption>
+    </hudson.plugins.throttleconcurrents.ThrottleJobProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>true</concurrentBuild>
+  <builders>
+    <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.28">
+      <project>RFACPP_INIT</project>
+      <filter>rfacpp.properties</filter>
+      <target></target>
+      <selector class="hudson.plugins.copyartifact.StatusBuildSelector"/>
+    </hudson.plugins.copyartifact.CopyArtifact>
+    <hudson.tasks.Shell>
+      <command>if [ ${_SECTIONS} != &quot;All&quot; ]
+then
+   cat rfacpp.properties | egrep -v &quot;^_SECTIONS&quot; &gt; tmp
+   cp tmp rfacpp.properties
+   echo &quot;_SECTIONS=${_SECTIONS}&quot; &gt;&gt; rfacpp.properties
+   echo &quot;_SECTIONS_CHECK=${_SECTIONS}&quot; &gt;&gt; rfacpp.properties
+else
+   echo &quot;_SECTIONS_CHECK=All&quot; &gt;&gt; rfacpp.properties
+fi
+
+echo &quot;_MACHINES=${_MACHINES}&quot;
+echo &quot;_MACHINES=${_MACHINES}&quot; &gt;&gt; rfacpp.properties
+
+exit</command>
+    </hudson.tasks.Shell>
+    <EnvInjectBuilder plugin="envinject@1.89">
+      <info>
+        <propertiesFilePath>rfacpp.properties</propertiesFilePath>
+      </info>
+    </EnvInjectBuilder>
+    <hudson.tasks.Shell>
+      <command>UNAME_S=`uname -s`
+if [[ $UNAME_S == *Windows* ]]
+then
+   echo "Windows"
+   set +e
+   net use p: \\\\192.168.8.151\\TESTMAP apibkk /user:administrator 
+   set -e
+   _AUTOMATE_PATH=${AT_WIN_AUTOMATE_PATH}
+
+else
+   echo "UNIX"
+   _AUTOMATE_PATH=${AT_UNIX_AUTOMATE_PATH}
+fi
+
+cd ${_AUTOMATE_PATH}/Tools/Jenkins_Code
+
+cat 05_Build_Slave.sh &gt; build_${_MACHINES}.sh
+dos2unix build_${_MACHINES}.sh
+chmod +x build_${_MACHINES}.sh
+./build_${_MACHINES}.sh
+rm build_${_MACHINES}.sh
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

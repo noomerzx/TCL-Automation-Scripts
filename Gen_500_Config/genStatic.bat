@@ -1,0 +1,2 @@
+tclsh genConfigStatic.tcl
+pause

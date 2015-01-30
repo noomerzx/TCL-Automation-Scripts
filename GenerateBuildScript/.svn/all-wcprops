@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/bkkimstesttool_tools/!svn/ver/5965/trunk/CI/Tools/GenerateBuildScript
+END
+genPKV.bat
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bkkimstesttool_tools/!svn/ver/5965/trunk/CI/Tools/GenerateBuildScript/genPKV.bat
+END
+generateBuildScripts.tcl
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/bkkimstesttool_tools/!svn/ver/5965/trunk/CI/Tools/GenerateBuildScript/generateBuildScripts.tcl
+END

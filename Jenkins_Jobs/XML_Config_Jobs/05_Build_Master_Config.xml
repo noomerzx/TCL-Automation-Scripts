@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <jenkins.advancedqueue.AdvancedQueueSorterJobProperty plugin="PrioritySorter@2.6">
+      <useJobPriority>false</useJobPriority>
+      <priority>-1</priority>
+    </jenkins.advancedqueue.AdvancedQueueSorterJobProperty>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <com.cwctravel.hudson.plugins.extended__choice__parameter.ExtendedChoiceParameterDefinition plugin="extended-choice-parameter@0.30">
+          <name>_SECTIONS</name>
+          <description></description>
+          <quoteValue>false</quoteValue>
+          <visibleItemCount>5</visibleItemCount>
+          <type>PT_SINGLE_SELECT</type>
+          <value>word_section</value>
+          <propertyFile></propertyFile>
+          <propertyKey></propertyKey>
+          <defaultValue></defaultValue>
+          <defaultPropertyFile></defaultPropertyFile>
+          <defaultPropertyKey></defaultPropertyKey>
+          <multiSelectDelimiter>,</multiSelectDelimiter>
+        </com.cwctravel.hudson.plugins.extended__choice__parameter.ExtendedChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+    <hudson.plugins.throttleconcurrents.ThrottleJobProperty plugin="throttle-concurrents@1.8.1">
+      <maxConcurrentPerNode>0</maxConcurrentPerNode>
+      <maxConcurrentTotal>0</maxConcurrentTotal>
+      <throttleEnabled>false</throttleEnabled>
+      <throttleOption>project</throttleOption>
+    </hudson.plugins.throttleconcurrents.ThrottleJobProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.28">
+      <project>word_init</project>
+      <filter>rfacpp.properties</filter>
+      <target></target>
+      <selector class="hudson.plugins.copyartifact.StatusBuildSelector"/>
+    </hudson.plugins.copyartifact.CopyArtifact>
+    <hudson.tasks.Shell>
+      <command>if [ ${_SECTIONS} != &quot;All&quot; ]
+then
+   cat rfacpp.properties | egrep -v &quot;^_SECTIONS&quot; &gt; tmp
+   cp tmp rfacpp.properties
+   echo &quot;_SECTIONS=${_SECTIONS}&quot; &gt;&gt; rfacpp.properties
+else
+   echo &quot;_SECTIONS_CHECK=All&quot; &gt;&gt; rfacpp.properties
+fi
+echo &quot;_MACHINES=${_MACHINES}&quot;
+
+exit</command>
+    </hudson.tasks.Shell>
+    <EnvInjectBuilder plugin="envinject@1.89">
+      <info>
+        <propertiesFilePath>rfacpp.properties</propertiesFilePath>
+      </info>
+    </EnvInjectBuilder>
+    <hudson.tasks.Shell>
+      <command>UNAME_S=`uname -s`
+if [[ $UNAME_S == *Windows* ]]
+then
+   echo "Windows"
+   set +e
+   net use p: \\\\192.168.8.151\\TESTMAP apibkk /user:administrator 
+   set -e
+   _GLOBAL_INPUT="Global_Input_Win.txt"
+   _AUTOMATE_PATH=${AT_WIN_AUTOMATE_PATH}
+   _PACKAGE_PATH=${AT_WIN_PACKAGEPATH}
+
+else
+   echo "UNIX"
+   _GLOBAL_INPUT="Global_Input_Unix.txt"
+   _AUTOMATE_PATH=${AT_UNIX_AUTOMATE_PATH}
+   _PACKAGE_PATH=${AT_UNIX_PACKAGEPATH}
+fi
+
+cd ${_AUTOMATE_PATH}/Tools/Jenkins_Code
+dos2unix 05_Build_Master.sh
+chmod +x 05_Build_Master.sh
+./05_Build_Master.sh
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

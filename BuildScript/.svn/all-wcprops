@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/bkkimstesttool_tools/!svn/ver/6089/trunk/CI/Tools/BuildScript
+END
+buildScript.tcl
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bkkimstesttool_tools/!svn/ver/6089/trunk/CI/Tools/BuildScript/buildScript.tcl
+END
+pkgIndex.tcl
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bkkimstesttool_tools/!svn/ver/5716/trunk/CI/Tools/BuildScript/pkgIndex.tcl
+END
+Example.tcl
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bkkimstesttool_tools/!svn/ver/5965/trunk/CI/Tools/BuildScript/Example.tcl
+END

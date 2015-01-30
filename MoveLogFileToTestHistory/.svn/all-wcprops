@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/bkkimstesttool_tools/!svn/ver/5965/trunk/CI/Tools/CreateHistory
+END
+test.bat
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bkkimstesttool_tools/!svn/ver/5965/trunk/CI/Tools/CreateHistory/test.bat
+END
+createHistory.tcl
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bkkimstesttool_tools/!svn/ver/5965/trunk/CI/Tools/CreateHistory/createHistory.tcl
+END

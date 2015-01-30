@@ -1,0 +1,2 @@
+tclsh generateBuildScripts.tcl RFACPP760_XDEV5 01_PackageVerification W7P_32 P:\\Packages/RFACPP760_CANRRG
+pause

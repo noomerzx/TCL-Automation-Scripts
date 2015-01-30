@@ -1,0 +1,19 @@
+set logPath [lindex $argv 0]
+regsub {\\} $logPath {/} logPath
+regexp {/([0-9][0-9]_[a-zA-z]*)} $logPath tempSection sectionName
+regexp {(RFACPP|RFANET)[0-9]+_[a-zA-Z0-9]+} $logPath packageName
+regexp {[a-zA-Z0-9]+_[0-9]+_[0-9]+(_SH|_ST)?} $logPath platformName
+set historyPath ../../../../../Test_History/$sectionName
+cd $logPath
+set logList [glob -type f *.log]
+foreach log $logList {
+	set logTemp [split $log "."]
+	set logName [lindex $logTemp 0]
+	regsub -all {_EXP} $logName {} logFolder
+	
+	if {![file isdirectory $historyPath/$logFolder]} {file mkdir $historyPath/$logFolder}
+	if {![catch {exec rm -rf ${historyPath}/$logFolder/${packageName}_${platformName}_${logName}.log }]} {}
+	if {![catch {exec cp -rf $log ${historyPath}/$logFolder/${packageName}_${platformName}_${logName}.log }]} {
+			puts "::: Already Collect ${packageName}_${platformName}_${logName}.log :::"
+	}
+}

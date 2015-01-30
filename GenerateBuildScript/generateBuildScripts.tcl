@@ -1,0 +1,208 @@
+proc prepareVariable { files packageName pos} {
+	global platformName
+	global plat
+	global bit
+	global compiler
+	global staticOrShared
+	global zionConfig
+	global packages
+	global tclPckPath
+	global autoPath
+	
+	#--- set platformName from split filename
+	set platformName ""
+	#--- Change '.' to '_'
+	regsub -all {\.} [lindex ${files} ${pos}] {_} text
+	#--- split filename with '_' and collect latest 4 values.
+	set textList [split $text "_"]
+	append platformName [lindex $textList [expr [llength $textList]-5]] 
+	append platformName "_"
+	append platformName [lindex $textList [expr [llength $textList]-4]] 
+	append platformName "_"
+	append platformName [lindex $textList [expr [llength $textList]-3]]
+	append platformName "_"
+	append platformName [lindex $textList [expr [llength $textList]-2]] 
+	
+	#--- Set all variables
+	set forSplit [split $platformName "_"]
+	set plat [string index [lindex $forSplit 0] 0]
+	set bit [lindex $forSplit 1]
+	set compiler [lindex $forSplit 2]
+	set staticOrShared [lindex $forSplit 3]
+	
+	#--- Set package from platform
+	if {[string equal $plat "W"]} {
+		set zionConfig "../../config-zion.txt"
+	} else {
+		set zionConfig "../../config-zion.txt"
+	}
+	
+	#--- Set path
+	set tclPckPath "../../../../Tools/BuildScript"
+	set autoPath "../../../../Tools/BuildScript"
+}
+proc GenerateBuildScripts { packageName sectionName platform packagePath} {
+	global bit
+	global compiler
+	global staticOrShared
+	global zionConfig
+	global fileType
+	global platformName
+	global plat
+	global tclPckPath
+	global autoPath
+	
+	#--- platform is just platforms shortname and bit ( example W7P_32 / W80E_64 )
+		
+	#--- check and list files depend on platform argument
+	set files [glob inputForBuild/appList_${sectionName}_${platform}_*.txt]
+	set filesLength [llength [glob inputForBuild/appList_${sectionName}_${platform}*.txt]]
+	
+	#--- loop with appList files depend on platform
+	for {set i 0} {${i} < ${filesLength}} {incr i} {
+		#--- read application from appList
+		if {![catch {set fileApp [open [lindex ${files} $i] r]} errorMsg]} {
+			set fileAppData [read ${fileApp}]
+			close ${fileApp}
+		}
+		
+		#--- set all variable
+		regsub -all {\\} $packagePath / packagePath
+		prepareVariable $files $packageName $i
+		
+		#--- Create folder
+		if {![file isdirectory Scripts]} {file mkdir Scripts}
+		if {![file isdirectory logResult]} {file mkdir logResult}
+		
+		#--- Open output file batch shell and tcl
+		set batchOutput [ open "$platformName.bat" w ]
+		# set shellOutput [ open "Batchs/$platformName.sh" w ]
+		set tclOutput [ open "Scripts/$platformName.tcl" w ]
+		
+		#--- Write in Batch output 
+		puts $batchOutput "tclsh Scripts/$platformName.tcl"
+		puts $batchOutput "pause"
+		close $batchOutput
+		puts ":::: Complete : [file normalize "${platformName}.bat"] ::::"
+		
+		#--- Write in TCL output below
+		puts $tclOutput "#!/usr/bin/tclsh"
+		puts $tclOutput "lappend auto_path	{${autoPath}}"
+		puts $tclOutput "package require Build 1.2"
+		puts $tclOutput "set fd \[ open \"./logResult/${platformName}.log\" w \]"
+		puts $tclOutput ""
+		puts $tclOutput "initial \"$packagePath\" \"$zionConfig\""
+		puts $tclOutput "###################################################################" 
+		puts $tclOutput "########################## $platformName ##########################" 
+		puts $tclOutput "###################################################################" 
+		set appData [split $fileAppData "\n"]
+		foreach lineApps $appData {
+			if { ![string equal [string trim $lineApps] ""] } {
+				regsub -all {\\} $lineApps {\\\\} lineApps
+				set winPath [lindex $lineApps 0]
+				set application [lindex $lineApps 1]
+				set type [lindex $lineApps 2]
+				set check [split $winPath "\\"]
+				if { [expr [string equal $type "sln"]||[string equal $type "csproj"]] } {
+					set fileType $type
+				} else {
+					if { $compiler =="90"} {
+						set fileType "vcproj"
+					} elseif { [expr ($compiler =="100") || ($compiler =="110")] } {
+						set fileType "vcxproj"
+					}
+				}
+				
+				regsub -all {\\} $winPath {\\\\} winPath
+				regsub -all {\\\\} $winPath {/} unixPath
+				
+				
+				# set conditionToGenerateBuildScriptForWinAndUnix = [!(regexp -nocase {"Legacy_.*"} [lindex $check 0] && string equal $bit "64")] && [expr !([string equal $application "Libxml2"] && [string equal $staticOrShared "SH"])]
+				set isLegacy [regexp -nocase {Legacy_.*} [lindex $check 0]]
+				
+				set is64bit [expr [string equal $bit "64"]]
+				set isLibXml2 [expr [string equal $application "Libxml2"]]
+				set isShare [expr [string equal $staticOrShared "SH"]]
+				set conditionToGenerateBuildScriptForWinAndUnix [expr !($isLegacy && $is64bit) && !($isLibXml2 && $isShare)]
+				
+				set isWindows [string equal $plat "W"]
+				set isPkgVer [regexp {PackageVerification} $winPath]
+				set isUnix [expr ![string equal $plat "W"]]
+				set isNewDisplay [expr [string equal $application "NewsDisplay"] || [string equal $application "RFANewsDisplay"]]
+				set isOrderBook [expr [string equal $application "orderbook"]]
+				
+				if {$conditionToGenerateBuildScriptForWinAndUnix} {
+					if {$isWindows} {
+						if {$isPkgVer} {
+							# Section PackageVer build both Release and Debug version
+							puts $tclOutput "puts \$fd \[ buildExample ${winPath} ${application} ${platformName} ${fileType} \]"
+						} else {
+						    # Others section that's not PackageVer build only Release version
+							puts $tclOutput "puts \$fd \[ buildExample ${winPath} ${application} ${platformName} ${fileType} Release \]"
+						}
+					} elseif {$isUnix} {
+					
+						if {[expr !($isNewDisplay || $isOrderBook)]
+						} {
+							puts $tclOutput "puts \$fd \[ buildExample $unixPath $application $platformName \]"
+						}
+					}
+				}
+				
+
+				# N'Nhoom logic just backup
+				# if { 
+					# [expr !([string equal [lindex $check 0] "Legacy_01_PackageVerification"] && [string equal $bit "64"])] && 
+					# [expr !([string equal $application "Libxml2"] && [string equal $staticOrShared "SH"])]
+				# } {
+					# if {[string equal $plat "W"]} {
+						# if {[regexp {PackageVerification} $winPath]} {
+							# puts $tclOutput "puts \$fd \[ buildExample ${winPath} ${application} ${platformName} ${fileType} \]"
+						# }
+						# else {
+							# puts $tclOutput "puts \$fd \[ buildExample ${winPath} ${application} ${platformName} ${fileType} Release \]"
+							# # puts $tclOutput "puts \$fd \[ buildExample ${winPath} ${application} ${platformName} ${fileType} Debug \]"
+						# }
+					# }
+					# else {
+						# if {[expr [string equal $application "NewsDisplay"] 
+							# || [string equal $application "orderbook"] 
+							# || [string equal $application "RFANewsDisplay"]]} {
+						# } else {
+							# puts $tclOutput "puts \$fd \[ buildExample $unixPath $application $platformName \]"
+						# }
+					# }
+				# }
+				
+				
+			} 
+		}
+		close $tclOutput
+		puts ":::: Complete : [file normalize "$platformName.tcl"] ::::"
+	}
+}
+
+#--- Main Process
+if {$argc == 4} {
+	set packageName [lindex $argv 0]
+	set sectionName [lindex $argv 1]
+	set platform [lindex $argv 2]
+	set packagePath [lindex $argv 3]
+	GenerateBuildScripts $packageName $sectionName $platform $packagePath
+} else {
+	puts "::::::::::::::::::::: ERROR : You Entered Wrong Argument :::::::::::::::::::::"
+	puts "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
+	puts "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
+	puts "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
+	puts "::::::::::::::::::::::::::::::::: EXAMPLES :::::::::::::::::::::::::::::::::::"
+	puts "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
+	puts "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
+	puts "tclsh ceateScript.tcl administrator apibkk RFACPP760XDEV3 01_PackageVerification"
+	puts "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
+	puts "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
+	puts ":::::::::::::::::::::::::::::::::::: OR ::::::::::::::::::::::::::::::::::::::"
+	puts "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
+	puts "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
+	puts ":::::::: tclsh ceateScript.tcl RFACPP760XDEV3 01_PackageVerification :::::::::"
+	puts "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
+}

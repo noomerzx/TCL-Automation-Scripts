@@ -1,0 +1,104 @@
+###############################################################################
+SERVICE
+###############################################################################
+*IDN_RDF*HSAutoFailback*decisionTime : 60
+*IDN_RDF*HSAutoFailback*enable : True
+*IDN_RDF*HSAutoFailback*network : mdhnet;238.3.3.3|9093|
+*IDN_RDF*ageUnwatchedItemTime : 0
+*IDN_RDF*blockedItemsFile : /var/reuters/rmds/blockeditems_file
+*IDN_RDF*cacheLocation : srcApp
+*IDN_RDF*cacheType : sinkDriven
+*IDN_RDF*contribDataFileDirectory : .
+*IDN_RDF*contribExchangeFieldList : 
+*IDN_RDF*contribFieldList : 
+*IDN_RDF*contribInsertRTL : False
+*IDN_RDF*contribMaxUpdateRate : 5000
+*IDN_RDF*contribMinUpdateRate : 500
+*IDN_RDF*contribNegativeTemplateIdList : 80, 85
+*IDN_RDF*contribPositiveTemplateIdList : 
+*IDN_RDF*convertMfeedDataToRWF : True
+*IDN_RDF*convertToIDNStyle : False
+*IDN_RDF*dataType : 6
+*IDN_RDF*discourageRequestsOnOutage : True
+*IDN_RDF*dismountOnOutage : False
+*IDN_RDF*expandedEnumFields : True
+*IDN_RDF*forwardItemPriorityToSrcApp : False
+*IDN_RDF*forwardServerMode : False
+*IDN_RDF*headlinePermissioning : True
+*IDN_RDF*hotStandby*heartbeat : 1
+*IDN_RDF*hotStandby*learnTime : 10
+*IDN_RDF*hotStandby*maxUpdateRate : 5000
+*IDN_RDF*hotStandby*retryTime : 180
+*IDN_RDF*hotStandby*standbyForwardInsertToSrcApp : True
+*IDN_RDF*hotStandby*temporalDifference : 1
+*IDN_RDF*hotStandby*timeout : 3
+*IDN_RDF*includeUnwatchedItemsInLoad : False
+*IDN_RDF*insertAction : lowest
+*IDN_RDF*itemPriorityFile : /var/reuters/rmds/priority_file
+*IDN_RDF*lockedItemThreshold : 5
+*IDN_RDF*maxLoadLevel : 65535
+*IDN_RDF*maxOperDuringFailover : 20
+*IDN_RDF*newsNameList : N2_UBMS
+*IDN_RDF*nonCachingItemFile : /var/reuters/rmds/nonCachingItem_file
+*IDN_RDF*nonCachingItemList : 
+*IDN_RDF*nonRecoverablePolling : False
+*IDN_RDF*normalRetryTime : 120
+*IDN_RDF*normalizedLoadLevelThresholdForConcurrentRequests : 95
+*IDN_RDF*openWindowTimeWindow : 15
+*IDN_RDF*pollCache : True
+*IDN_RDF*preemption : ssl
+*IDN_RDF*preemptionRecoveryThreshold : 0
+*IDN_RDF*preemptionRetryTime : 180
+*IDN_RDF*priorityAwareMarketfeed : False
+*IDN_RDF*qosRate : TICK_BY_TICK
+*IDN_RDF*qosRateInfo : 0
+*IDN_RDF*qosTimeInfo : 0
+*IDN_RDF*qosTimeliness : REALTIME
+*IDN_RDF*recoverItemsOnClose : False
+*IDN_RDF*removeUnwatchedItems : False
+*IDN_RDF*retryLimit : 0
+*IDN_RDF*retryTimer : 60
+*IDN_RDF*rrmpFlushInterval : 20
+*IDN_RDF*seqNumFollowsMarketfeedRules : True
+*IDN_RDF*serviceCacheDumpFile : 
+*IDN_RDF*serviceDumpFile : 
+*IDN_RDF*serviceId : 21174
+*IDN_RDF*serviceQueueTimerMilliseconds : 10
+*IDN_RDF*serviceRestartTime : 600
+*IDN_RDF*staleRecoveryRetryTime : 600
+*IDN_RDF*supportsOutofBandSnapshots : True
+*IDN_RDF*supportsSnapshots : True
+*IDN_RDF*useP2PForHotStandbyHeartbeat : False
+###############################################################################
+ROUTE
+###############################################################################
+*adh*route71.route*IDN_RDF*Broadcast*groupList : 2
+*adh*route71.route*IDN_RDF*Interactive*groupList : 1, 3, 4
+*adh*route71.route*IDN_RDF*appServiceName : RED3_ELEKTRON_EPD_RSSL 
+*adh*route71.route*IDN_RDF*commLinks : Interactive, Broadcast
+*adh*route71.route*IDN_RDF*dacsAttributes : 
+*adh*route71.route*IDN_RDF*datastreamMonitor*interruptionDetection : False
+*adh*route71.route*IDN_RDF*datastreamMonitor*interruptionDuration : 4
+*adh*route71.route*IDN_RDF*datastreamMonitor*trafficWindow : 10
+*adh*route71.route*IDN_RDF*lockedDumpFile : 
+*adh*route71.route*IDN_RDF*maxCache : 60000
+*adh*route71.route*IDN_RDF*serverCost : 0
+*adh*route71.route*IDN_RDF*serverId : 41174
+*adh*route71.route*IDN_RDF*updateRateThreshold : 200
+*adh*route71.route*applicationId : 256
+*adh*route71.route*hostList : 192.168.8.122
+*adh*route71.route*numIpcInputBuffers : 10
+*adh*route71.route*numIpcOutputBuffers : 100
+*adh*route71.route*pingInterval : 2
+*adh*route71.route*port : 19002 
+*adh*route71.route*protocol : rssl 
+*adh*route71.route*recoveryBySSLLib : True
+*adh*route71.route*recoveryInterval : 10
+*adh*route71.route*serviceList : IDN_RDF
+*adh*route71.route*singleOpen : False
+*adh*route71.route*tcpNoDelay : False
+*adh*route71.route*tcpRecvBufSize : 2097152
+*adh*route71.route*userName : rmds
+###############################################################################
+*adh*routeList : route79, route74, route71
+###############################################################################

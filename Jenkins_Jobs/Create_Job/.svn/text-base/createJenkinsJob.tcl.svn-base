@@ -1,0 +1,97 @@
+proc readData { filename } {
+	global fileInputData
+	if {![catch {set fileInput [open $filename r]} errorMsg]} {
+		set fileInputData [read ${fileInput}]
+		close ${fileInput}
+		return "PASS"
+	} else {
+		puts $errorMsg 
+		return "FAIL" 
+	}
+}
+proc writeData { filename datas } {
+	if {![catch {set fileOutput [open $filename w]} errorMsg]} {
+		foreach data $datas {
+			puts $fileOutput "$data"
+		}
+		return "PASS"
+	} else { 
+		puts $errorMsg 
+		return "FAIL" 
+	}
+}
+
+###############################################
+# needed 2 arguments (argument 3 optional(create multiple job)) 
+# 1st argument : name of jenkins job u need to create ( use replaceword to replace word with your output file)
+# 2nd argument : xml config for create job
+# 3rd argument : file input for replace in job name (job will create depend on input [ 3 input = 3 job created ])
+###############################################
+#
+# EXAMPLE
+#
+# * Command Call * 2 argument *
+# tclsh createJenkinsJob.tcl 06_Execute_Slave P:/SystemTest/Tools/Jenkins_Code/XML_Config_Jobs/06_Execute_Slave_Config.xml
+#
+# * Your Output *
+#
+# 06_Execute_Slave
+#
+##############################################
+#
+# * Command Call * 3 argument *
+# tclsh createJenkinsJob.tcl 06_Execute_replaceword_Slave P:/SystemTest/Tools/Jenkins_Code/XML_Config_Jobs/06_Execute_Slave_Config.xml input.txt
+#
+# * Job Name *
+# 06_Execute_replaceword_Slave
+#
+# * input file contain *
+# 01_PackageVerification
+# 02_Subscription
+#
+# * Your Output *
+#
+# 06_Execute_01_PackageVerification_Slave
+# 06_Execute_02_02_Subscription_Slave
+#
+###############################################
+
+set jobname [lindex $argv 0]
+set xmlConfig [lindex $argv 1]
+set fileOutputGen "Job/genJob_"
+set fileOutputClean "Job/cleanJob_"
+global fileInputData
+global fileOutputDataGen
+global fileOutputDataClean
+if {$argc == 3} { 
+	set fileInputName [lindex $argv 2] 
+	if { [readData $fileInputName] =="PASS" } {
+		foreach inputData $fileInputData {
+			regsub -all {\[[wW][oO][rR][dD]\]} $jobname "$inputData" job
+			lappend fileOutputDataGen "java -jar [pwd]/jenkins-cli.jar -s http://192.168.8.54:8080 create-job $job \< $xmlConfig"
+			lappend fileOutputDataClean "java -jar [pwd]/jenkins-cli.jar -s http://192.168.8.54:8080 delete-job $job"
+			puts ----$fileOutputDataGen
+			puts ++++$fileOutputDataClean
+		}
+	}
+} else {
+	set job $jobname
+	lappend fileOutputDataGen "java -jar [pwd]/jenkins-cli.jar -s http://192.168.8.54:8080 create-job $job \< $xmlConfig"
+	lappend fileOutputDataClean "java -jar [pwd]/jenkins-cli.jar -s http://192.168.8.54:8080 delete-job $job"
+	puts ----$fileOutputDataGen
+	puts ++++$fileOutputDataClean
+}
+regsub -all {\[[wW][oO][rR][dD]\]} $jobname {} temp
+regsub -all {__} $temp {_} temp
+append fileOutputGen ${temp}.bat
+append fileOutputClean ${temp}.bat
+if {![file isdirectory Job]} {file mkdir Job}
+if { [writeData $fileOutputGen $fileOutputDataGen] =="PASS" } {
+	puts "File for create Jenkins Jobs COMPLETE Output File is \"$fileOutputGen\""
+} else { puts "ERROR Can't generate File for create Jenkins Jobs"}
+if { [writeData $fileOutputClean $fileOutputDataClean] =="PASS" } {
+	puts "File for delete Jenkins Jobs COMPLETE Output File is \"$fileOutputClean\""
+} else { puts "ERROR Can't generate File for delete Jenkins Jobs"}
+
+
+
